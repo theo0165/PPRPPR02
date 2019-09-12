@@ -40,9 +40,4 @@ public class Läxa {
         // 3. Skapa en generisk metod som tar in ett okänt antal objekt och returnerar en array av dem.
         return items;
     }
-
-    public static String[] anagram(String text){
-        // 6. Skapa en rekursiv metod som tar in ett ord och skriver ut alla anagram av ordet.*
-        return ;
-    }
 }
