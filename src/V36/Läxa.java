@@ -1,14 +1,7 @@
 package V36;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Läxa {
-    private static Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args){
-        anagram("hej", "");
-    }
+    public static void main(String[] args){ }
 
     public static int sum(int... inputs){
         // 1. Skapa en metod som tar in ett okänt antal heltal och returnerar deras summa.
