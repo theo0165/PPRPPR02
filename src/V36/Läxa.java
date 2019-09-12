@@ -7,13 +7,7 @@ public class Läxa {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
-        //System.out.println(sum(1, 2, 3));
-        //ReturnArray(1, 2, 3, 4);
-
-        Box box = new Box(1, "hej");
-        Box box2 = new Box(true, false, true);
-
-        System.out.println(box.compare(box2));
+        anagram("hej", "");
     }
 
     public static int sum(int... inputs){
@@ -39,5 +33,15 @@ public class Läxa {
     public static <T> T[] ReturnArray(T... items){
         // 3. Skapa en generisk metod som tar in ett okänt antal objekt och returnerar en array av dem.
         return items;
+    }
+
+    public static void anagram(String text, String text2){
+        if(text.length() == 0){
+            System.out.println(text2);
+        }
+
+        for (int i = 0; i<text.length(); i++) {
+            anagram(text.substring(0, i) + text.substring(i+1, text.length()), text.charAt(i) + text2);
+        }
     }
 }
