@@ -1,7 +1,9 @@
 package V36;
 
 public class Läxa {
-    public static void main(String[] args){ }
+    public static void main(String[] args){
+        sum(1, 3, 5, 6, 7);
+    }
 
     public static int sum(int... inputs){
         // 1. Skapa en metod som tar in ett okänt antal heltal och returnerar deras summa.
