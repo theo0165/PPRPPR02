@@ -41,7 +41,7 @@ public class Main extends Application {
         mainLayout.setTop(getButtonPane());
         mainLayout.setCenter(getWelcomeText());
 
-        Scene scene = new Scene(mainLayout, 600, 300);
+        Scene scene = new Scene(mainLayout, 600, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -50,21 +50,21 @@ public class Main extends Application {
         HBox buttonPane = new HBox();
 
         Button[] buttons = {
-                new Button("Sverige"),
-                new Button("Italien"),
+                new Button("Sweden"),
+                new Button("Italy"),
                 new Button("Flagga 3"),
                 new Button("Flagga 4")
         };
 
         for (Button button : buttons) {
-            if(button.getText() == "Sverige"){
+            if(button.getText() == "Sweden"){
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
                         setFlag(new Sweden());
                     }
                 });
-            }else if(button.getText() == "Italien"){
+            }else if(button.getText() == "Italy"){
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -91,6 +91,19 @@ public class Main extends Application {
     }
 
     private static void setFlag(Flag flag){
-        
+        BorderPane flagBox = new BorderPane();
+        StackPane flagNameContainer = new StackPane();
+        Text flagName = new Text(flag.getName());
+
+        flagName.setFont(Font.font("Monserrat", FontWeight.BOLD, FontPosture.REGULAR, 30));
+        flagName.setTextAlignment(TextAlignment.CENTER);
+
+        flagNameContainer.setAlignment(Pos.CENTER);
+        flagNameContainer.getChildren().add(flagName);
+        flagBox.setTop(flagNameContainer);
+
+        flagBox.setCenter(flag.renderFlag());
+
+        mainLayout.setCenter(flagBox);
     }
 }
