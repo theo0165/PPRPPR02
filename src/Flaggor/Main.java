@@ -1,6 +1,7 @@
 package Flaggor;
 
 import Flaggor.Flags.Flag;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,7 +20,7 @@ Italien
  */
 
 public class Main extends Application {
-    //private static ArrayList<> flags = new ArrayList(){};
+    private static ArrayList<Flag> flags = new ArrayList<>();
 
     /**
      * Launch program
@@ -52,9 +53,7 @@ public class Main extends Application {
                 new Button("Flagga 4")
         };
 
-        for (Button button : buttons) {
-
-        }
+        //for (Button button : buttons) { }
 
         HBox box = new HBox(30);
         box.getChildren().addAll(buttons);
