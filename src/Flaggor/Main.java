@@ -1,9 +1,6 @@
 package Flaggor;
 
-import Flaggor.Flags.Flag;
-import Flaggor.Flags.Italy;
-import Flaggor.Flags.Senegal;
-import Flaggor.Flags.Sweden;
+import Flaggor.Flags.*;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,11 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 /*
 Flaggor:
@@ -57,7 +51,7 @@ public class Main extends Application {
                 new Button("Sweden"),
                 new Button("Italy"),
                 new Button("Senegal"),
-                new Button("Flagga 4")
+                new Button("Madagascar")
         };
 
         for (Button button : buttons) {
@@ -80,6 +74,13 @@ public class Main extends Application {
                     @Override
                     public void handle(ActionEvent event) {
                         setFlag(new Senegal());
+                    }
+                });
+            }else if(button.getText() == "Madagascar"){
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        setFlag(new Madagascar());
                     }
                 });
             }
