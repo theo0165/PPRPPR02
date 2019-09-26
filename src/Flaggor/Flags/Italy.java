@@ -20,21 +20,21 @@ public class Italy extends Flag {
         green.setWidth(133);
         green.setHeight(200);
         green.setFill(Color.rgb(0, 122, 51));
-        green.setTranslateX(0);
+        green.setTranslateX(-133);
         green.setTranslateY(0);
 
         Rectangle white = new Rectangle();
         white.setWidth(133);
         white.setHeight(200);
         white.setFill(Color.WHITE);
-        white.setTranslateX(133);
+        white.setTranslateX(0);
         white.setTranslateY(0);
 
         Rectangle red = new Rectangle();
         red.setWidth(133);
         red.setHeight(200);
         red.setFill(Color.rgb(203, 51, 59));
-        red.setTranslateX(266);
+        red.setTranslateX(133);
         red.setTranslateY(0);
 
         flagContainer.getChildren().add(green);
