@@ -2,7 +2,7 @@ package Flaggor.Flags;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

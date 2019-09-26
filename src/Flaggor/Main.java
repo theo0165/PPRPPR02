@@ -12,6 +12,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 
@@ -41,6 +43,7 @@ public class Main extends Application {
 
         mainLayout.setTop(getButtonPane());
         mainLayout.setCenter(getWelcomeText());
+        mainLayout.setStyle("-fx-background-color: #2c2c54;");
 
         Scene scene = new Scene(mainLayout, 600, 500);
         primaryStage.setScene(scene);
@@ -95,6 +98,7 @@ public class Main extends Application {
         Text txt = new Text("Welcome! Choose flag!");
         txt.setFont(Font.font("Monserrat", FontWeight.BOLD, FontPosture.REGULAR, 50));
         txt.setTextAlignment(TextAlignment.CENTER);
+        txt.setFill(Color.WHITE);
         return txt;
     }
 
@@ -105,6 +109,7 @@ public class Main extends Application {
 
         flagName.setFont(Font.font("Monserrat", FontWeight.BOLD, FontPosture.REGULAR, 30));
         flagName.setTextAlignment(TextAlignment.CENTER);
+        flagName.setFill(Color.WHITE);
 
         flagNameContainer.setAlignment(Pos.CENTER);
         flagNameContainer.getChildren().add(flagName);
