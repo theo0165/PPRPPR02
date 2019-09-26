@@ -1,6 +1,5 @@
 package Flaggor.Flags;
 
-import com.sun.javafx.font.directwrite.RECT;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
