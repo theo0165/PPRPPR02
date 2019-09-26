@@ -5,6 +5,7 @@ import Flaggor.Flags.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -91,6 +92,7 @@ public class Main extends Application {
 
         buttonPane.getChildren().add(box);
         buttonPane.setAlignment(Pos.CENTER);
+        buttonPane.setPadding(new Insets(10, 0, 0, 0));
 
         return buttonPane;
     }
@@ -114,6 +116,7 @@ public class Main extends Application {
 
         flagNameContainer.setAlignment(Pos.CENTER);
         flagNameContainer.getChildren().add(flagName);
+        flagNameContainer.setPadding(new Insets(40, 0, 0, 0));
         flagBox.setTop(flagNameContainer);
 
         flagBox.setCenter(flag.renderFlag());
