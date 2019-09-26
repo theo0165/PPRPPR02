@@ -1,12 +1,16 @@
 package Flaggor;
 
+import Flaggor.Flags.Flag;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 /*
 Flaggor:
@@ -15,6 +19,8 @@ Italien
  */
 
 public class Main extends Application {
+    //private static ArrayList<> flags = new ArrayList(){};
+
     /**
      * Launch program
      * @param args
@@ -36,7 +42,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private static javafx.scene.layout.HBox getButtonPane(){
+    private static HBox getButtonPane(){
         HBox buttonPane = new HBox();
 
         Button[] buttons = {
@@ -46,7 +52,14 @@ public class Main extends Application {
                 new Button("Flagga 4")
         };
 
-        buttonPane.getChildren().addAll(buttons);
+        for (Button button : buttons) {
+
+        }
+
+        HBox box = new HBox(30);
+        box.getChildren().addAll(buttons);
+
+        buttonPane.getChildren().add(box);
 
         return buttonPane;
     }
