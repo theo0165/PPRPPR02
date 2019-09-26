@@ -1,10 +1,10 @@
 package Flaggor;
 
 import Flaggor.Flags.Flag;
-
 import Flaggor.Flags.Italy;
 import Flaggor.Flags.Senegal;
 import Flaggor.Flags.Sweden;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,7 +25,6 @@ Senegal
  */
 
 public class Main extends Application {
-    private static ArrayList<Flag> flags = new ArrayList<>();
     public static BorderPane mainLayout = new BorderPane();
 
     /**
