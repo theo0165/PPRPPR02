@@ -14,13 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 
-/*
-Flaggor:
-Sverige
-Italien
-Senegal
- */
-
 /**
  * Main class for JavaFX program that paints out flags.
  */
@@ -132,6 +125,8 @@ public class Main extends Application {
      */
     private static void setFlag(Flag flag){
         BorderPane flagBox = new BorderPane();
+
+        //Needed to create flagNameContainer to make text align at center instead of left
         StackPane flagNameContainer = new StackPane();
         Text flagName = new Text(flag.getName());
 
@@ -141,6 +136,8 @@ public class Main extends Application {
 
         flagNameContainer.setAlignment(Pos.CENTER);
         flagNameContainer.getChildren().add(flagName);
+
+        //Add padding to top of flag name text to make some space between it and the buttons
         flagNameContainer.setPadding(new Insets(40, 0, 0, 0));
         flagBox.setTop(flagNameContainer);
 
