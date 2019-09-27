@@ -21,6 +21,9 @@ Italien
 Senegal
  */
 
+/**
+ * Main class for JavaFX program that paints out flags.
+ */
 public class Main extends Application {
     public static BorderPane mainLayout = new BorderPane();
 
@@ -32,12 +35,21 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Start program, set scene and create window
+     * @param primaryStage
+     */
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Flaggor");
+    public void start(Stage primaryStage){
+        primaryStage.setTitle("Flags");
 
+        //Add button pane to top position of BorderPane
         mainLayout.setTop(getButtonPane());
+
+        //Add welcome text to center position of BorderPane (will be replaced by flag once button is pressed)
         mainLayout.setCenter(getWelcomeText());
+
+        //Set background color of program
         mainLayout.setStyle("-fx-background-color: #2c2c54;");
 
         Scene scene = new Scene(mainLayout, 600, 500);
@@ -45,6 +57,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Generate and return button panel
+     * @return Button panel (HBox)
+     */
     private static HBox getButtonPane(){
         HBox buttonPane = new HBox();
 
@@ -55,6 +71,7 @@ public class Main extends Application {
                 new Button("Madagascar")
         };
 
+        // Go through all buttons and add EventHandlers
         for (Button button : buttons) {
             if(button.getText() == "Sweden"){
                 button.setOnAction(new EventHandler<ActionEvent>() {
@@ -97,6 +114,10 @@ public class Main extends Application {
         return buttonPane;
     }
 
+    /**
+     * Generate and return welcome text
+     * @return Welcome text (Text)
+     */
     private static Text getWelcomeText(){
         Text txt = new Text("Welcome! Choose flag!");
         txt.setFont(Font.font("Monserrat", FontWeight.BOLD, FontPosture.REGULAR, 50));
@@ -105,6 +126,10 @@ public class Main extends Application {
         return txt;
     }
 
+    /**
+     * Generate and set flag in main layout
+     * @param flag The flag to set (Flags.Flag)
+     */
     private static void setFlag(Flag flag){
         BorderPane flagBox = new BorderPane();
         StackPane flagNameContainer = new StackPane();
