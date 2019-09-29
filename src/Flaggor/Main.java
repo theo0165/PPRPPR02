@@ -24,9 +24,7 @@ public class Main extends Application {
      * Launch program
      * @param args
      */
-    public static void main(String[] args){
-        launch(args);
-    }
+    public static void main(String[] args){ launch(args); }
 
     /**
      * Start program, set scene and create window
