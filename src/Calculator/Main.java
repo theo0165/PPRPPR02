@@ -34,11 +34,12 @@ public class Main extends Application {
         ioField.setPrefHeight(50);
         ioField.setAlignment(Pos.CENTER_RIGHT);
 
+        //Check textfield on change (new input)
         ioField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt|\\√)*$")){
-                    ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt|\\√)]", ""));
+                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt|\\√)*$")){ //Check for only numbers and math characters
+                    ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt|\\√)]", "")); //Replace any non numbers and math characters
                 }
             }
         });
