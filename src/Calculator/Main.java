@@ -37,12 +37,13 @@ public class Main extends Application {
         ioField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt)*$")){
-                    ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt)]", ""));
+                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt|\\√)*$")){
+                    ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\^|\\%|sqrt|\\√)]", ""));
                 }
             }
         });
 
+        //√
         ioBox.getChildren().add(ioField);
 
         return ioBox;
