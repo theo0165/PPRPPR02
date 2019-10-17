@@ -9,28 +9,7 @@ import javafx.scene.layout.VBox;
 import java.util.regex.Pattern;
 
 public class IOField {
-    private static TextField ioField = new TextField();
-
-    public static VBox getIOField(){
-        VBox ioBox = new VBox();
-        ioField.setPrefHeight(50);
-        ioField.setAlignment(Pos.CENTER_RIGHT);
-
-        //Check textfield on change (new input)
-        ioField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\,)*$")){ //Check for only numbers and math characters
-                    ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\,)]$", "")); //Replace any non numbers and math characters
-                }
-            }
-        });
-
-        //√
-        ioBox.getChildren().add(ioField);
-
-        return ioBox;
-    }
+    public static TextField ioField = new TextField();
 
     public static TextField getIoField(){
         return ioField;
