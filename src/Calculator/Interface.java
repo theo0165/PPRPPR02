@@ -31,7 +31,7 @@ public class Interface {
                 new Button("4"), new Button("5"), new Button("6"), new Button("-"),
                 new Button("7"), new Button("8"), new Button("9"), new Button("*"),
                 new Button("C"), new Button("0"), new Button("="), new Button("/"),
-                new Button("%"), new Button(","), new Button("√")
+                new Button("%"), new Button("."), new Button("√")
         };
 
         for(Button button:buttons){
@@ -78,8 +78,8 @@ public class Interface {
         IOField.ioField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\,)*$")){ //Check for only numbers and math characters
-                    IOField.ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\,)]$", "")); //Replace any non numbers and math characters
+                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\.)*$")){ //Check for only numbers and math characters
+                    IOField.ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\.)]$", "")); //Replace any non numbers and math characters
                 }
             }
         });
