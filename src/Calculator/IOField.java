@@ -19,7 +19,7 @@ public class IOField {
         ioField.setText(ioField.getText() + toAdd);
     }
 
-    public static void removeFromField(){}
+    public static void removeFromField(){ ioField.setText(ioField.getText().substring(0, ioField.getText().length() - 1)); }
 
     public static void calculateField(){}
 }

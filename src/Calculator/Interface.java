@@ -35,46 +35,33 @@ public class Interface {
         };
 
         for(Button button:buttons){
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    if(button.getText() == "=") {
-                        IOField.calculateField();
-                    }else if(button.getText() == "C"){
-                        IOField.removeFromField();
-                    }else{
-                        IOField.addToField(button.getText());
-                    }
+            button.setOnAction(event -> {
+                if(button.getText() == "=") {
+                    IOField.calculateField();
+                }else if(button.getText() == "C"){
+                    IOField.removeFromField();
+                }else{
+                    IOField.addToField(button.getText());
                 }
             });
         }
 
         GridPane buttonPane = new GridPane();
 
-        // 1 2 3 +
-        HBox rowOne = new HBox();
-        rowOne.getChildren().addAll(buttons[0], buttons[1], buttons[2], buttons[3]);
-        buttonPane.add(rowOne, 0, 0);
+        //buttonPane
 
-        // 4 5 6 -
-        HBox rowTwo = new HBox();
-        rowTwo.getChildren().addAll(buttons[4], buttons[5], buttons[6], buttons[7]);
-        buttonPane.add(rowTwo, 0, 1);
+        int row = 0;
+        int column = 0;
+        for(int i=0;i<buttons.length;i++){
+            buttonPane.add(buttons[i], column, row);
 
-        // 7 8 9 *
-        HBox rowThree = new HBox();
-        rowThree.getChildren().addAll(buttons[8], buttons[9], buttons[10], buttons[11]);
-        buttonPane.add(rowThree, 0, 2);
-
-        // C 0 = /
-        HBox rowFour = new HBox();
-        rowFour.getChildren().addAll(buttons[12], buttons[13], buttons[14], buttons[15]);
-        buttonPane.add(rowFour, 0, 3);
-
-        // % , √
-        HBox rowFive = new HBox();
-        rowFive.getChildren().addAll(buttons[16], buttons[17], buttons[18]);
-        buttonPane.add(rowFive, 0, 4);
+            //Calculate button row and column index
+            column++;
+            if((i+1) % 4 == 0){
+                row++;
+                column = 0;
+            }
+        }
 
         return buttonPane;
     }
