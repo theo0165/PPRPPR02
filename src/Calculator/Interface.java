@@ -2,13 +2,11 @@ package Calculator;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.util.regex.Pattern;
@@ -26,6 +24,8 @@ public class Interface {
     }
 
     private static GridPane getButtonPane(){
+        GridPane buttonPane = new GridPane();
+
         Button[] buttons = {
                 new Button("1"), new Button("2"), new Button("3"), new Button("+"),
                 new Button("4"), new Button("5"), new Button("6"), new Button("-"),
@@ -44,9 +44,12 @@ public class Interface {
                     IOField.addToField(button.getText());
                 }
             });
-        }
 
-        GridPane buttonPane = new GridPane();
+            GridPane.setVgrow(button, Priority.ALWAYS);
+            GridPane.setHgrow(button, Priority.ALWAYS);
+
+            button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        }
 
         //buttonPane
 

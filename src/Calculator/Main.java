@@ -36,6 +36,7 @@ public class Main extends Application {
 
         Interface ui = new Interface();
         Scene scene = new Scene(ui.getInterface(), 400, 600);
+        pStage.setResizable(false);
         pStage.setScene(scene);
         pStage.show();
     }
