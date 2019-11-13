@@ -10,7 +10,11 @@ public class IOField {
     }
 
     public static void addToField(String toAdd){
-        ioField.setText(ioField.getText() + toAdd);
+        if(ioField.getText().length() > 0){
+            ioField.setText(ioField.getText() + toAdd);
+        }else if(toAdd != "+" && toAdd != "-" && toAdd != "*" && toAdd != "." && toAdd != "/" && toAdd != "%"){
+            ioField.setText(ioField.getText() + toAdd);
+        }
     }
 
     public static void removeFromField(){
