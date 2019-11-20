@@ -15,15 +15,15 @@ public class Interface {
     public static BorderPane mainLayout = new BorderPane();
 
     public Interface(){
-        mainLayout.setTop(getIOField());
-        mainLayout.setCenter(getButtonPane());
+        mainLayout.setTop(createIoField());
+        mainLayout.setCenter(createButtonPane());
     }
 
     public BorderPane getInterface(){
         return mainLayout;
     }
 
-    private static GridPane getButtonPane(){
+    private static GridPane createButtonPane(){
         GridPane buttonPane = new GridPane();
 
         Button[] buttons = {
@@ -69,23 +69,23 @@ public class Interface {
         return buttonPane;
     }
 
-    public static VBox getIOField(){
+    public static VBox createIoField(){
         VBox ioBox = new VBox();
-        IOField.ioField.setPrefHeight(50);
-        IOField.ioField.setAlignment(Pos.CENTER_RIGHT);
+        IOField.getIoField().setPrefHeight(50);
+        IOField.getIoField().setAlignment(Pos.CENTER_RIGHT);
 
         //Check textfield on change (new input)
-        IOField.ioField.textProperty().addListener(new ChangeListener<String>() {
+        IOField.getIoField().textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\.)*$")){ //Check for only numbers and math characters
-                    IOField.ioField.setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|sqrt|\\√|\\.)]$", "")); //Replace any non numbers and math characters
+                if(!Pattern.matches(newValue, "^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|\\√|\\.)*$")){ //Check for only numbers and math characters
+                    IOField.getIoField().setText(newValue.replaceAll("[^(\\d|\\+|\\-|\\*|\\/|\\(|\\)|\\%|\\√|\\.)]$", "")); //Replace any non numbers and math characters
                 }
             }
         });
 
         //√
-        ioBox.getChildren().add(IOField.ioField);
+        ioBox.getChildren().add(IOField.getIoField());
 
         return ioBox;
     }
