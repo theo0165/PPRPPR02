@@ -27,19 +27,53 @@ public class IOField {
 
     public static void calculateField(){
         String ioText = ioField.getText();
-        char[] ioTextChar = ioText.toCharArray();
-        ArrayList<String> eqArray = new ArrayList<>();
 
+        boolean isValid = checkIfValidOperation(ioText);
+        System.out.println(isValid);
 
-        int last = 0;
-        for(int i=0; i<ioField.getText().length(); i++){
-            char current = ioText.charAt(i);
+        if(isValid){
+            System.out.println("VALID");
+        }else{
+            System.out.println("INVALID");
+        }
+    }
 
-            if(current == '+' || current == '-' || current == '*' || current == '/' || current == '√'){
+    public static boolean checkIfValidOperation(String op){
+        boolean isValid = true;
 
+        //Checks if multiple operators are present directly after each other, ex. 1++1. If true operation is invalid
+        char lastChar = ' ';
+        for(char c:op.toCharArray()){
+            if((c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '√') && c == lastChar){
+                isValid = false;
             }
+
+            lastChar = c;
         }
 
-        System.out.println(eqArray);
+        //Checks if first or last char is an operator, if true operation is invalid
+        switch(op.charAt(0)){
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '%':
+            case '√':
+                System.out.println("FIRST CHAR");
+                isValid = false;
+        }
+
+        switch(op.charAt(op.length() - 1)){
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '%':
+            case '√':
+                System.out.println("LAST CHAR");
+                isValid = false;
+        }
+
+        return isValid;
     }
 }

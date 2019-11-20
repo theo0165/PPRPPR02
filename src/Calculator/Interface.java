@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import java.util.regex.Pattern;
 
 public class Interface {
-    public static BorderPane mainLayout = new BorderPane();
+    public static final BorderPane mainLayout = new BorderPane();
 
     public Interface(){
         mainLayout.setTop(createIoField());
@@ -24,9 +24,9 @@ public class Interface {
     }
 
     private static GridPane createButtonPane(){
-        GridPane buttonPane = new GridPane();
+        final GridPane buttonPane = new GridPane();
 
-        Button[] buttons = {
+        final Button[] buttons = {
                 new Button("1"), new Button("2"), new Button("3"), new Button("+"),
                 new Button("4"), new Button("5"), new Button("6"), new Button("-"),
                 new Button("7"), new Button("8"), new Button("9"), new Button("*"),
