@@ -28,17 +28,12 @@ public class IOField {
     public static void calculateField(){
         String ioText = ioField.getText();
 
-        boolean isValid = checkIfValidOperation(ioText);
-        System.out.println(isValid);
-
-        if(isValid){
-            System.out.println("VALID");
-        }else{
-            System.out.println("INVALID");
+        if(checkIfValidOperation(ioText)){
+            
         }
     }
 
-    public static boolean checkIfValidOperation(String op){
+    private static boolean checkIfValidOperation(String op){
         boolean isValid = true;
 
         //Checks if multiple operators are present directly after each other, ex. 1++1. If true operation is invalid
