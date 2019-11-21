@@ -84,7 +84,6 @@ public class Interface {
             }
         });
 
-        //√
         ioBox.getChildren().add(IOField.getIoField());
 
         return ioBox;

@@ -5,5 +5,5 @@ public abstract class MathFunction {
         return "";
     }
 
-    public abstract float parseEquation();
+    public abstract float parseEquation(float right, float left);
 }

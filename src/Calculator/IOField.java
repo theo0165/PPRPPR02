@@ -1,10 +1,12 @@
 package Calculator;
 
+import Calculator.Functions.Addition;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.regex.Pattern;
 
 public class IOField {
     private static TextField ioField = new TextField();
@@ -29,7 +31,9 @@ public class IOField {
         String ioText = ioField.getText();
 
         if(checkIfValidOperation(ioText)){
-            
+
+        }else{
+            new Alert(Alert.AlertType.ERROR, "Invalid math operation", ButtonType.OK).showAndWait();
         }
     }
 

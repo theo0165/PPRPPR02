@@ -1,5 +1,7 @@
 package Calculator.Functions;
 
+import Calculator.IOField;
+
 public class Addition extends MathFunction{
     @Override
     public String getOperator(){
@@ -7,7 +9,7 @@ public class Addition extends MathFunction{
     }
 
     @Override
-    public float parseEquation() {
-        return 0;
+    public float parseEquation(float right, float left) {
+        return right + left;
     }
 }
