@@ -18,12 +18,13 @@ public class IOField {
     public static void addToField(String toAdd){
         if(ioField.getText().length() > 0){
             ioField.setText(ioField.getText() + toAdd);
-        }else if(toAdd != "+" && toAdd != "-" && toAdd != "*" && toAdd != "." && toAdd != "/" && toAdd != "%"){
+        }else if(toAdd != "+" && toAdd != "-" && toAdd != "*" && toAdd != "." && toAdd != "/" && toAdd != "%"){ //Dissallow adding to operators after each other
             ioField.setText(ioField.getText() + toAdd);
         }
     }
 
     public static void removeFromField(){
+        //Checks if ioField is larger than 1 characters and removing last character
         if(ioField.getText().length() > 0) ioField.setText(ioField.getText().substring(0, ioField.getText().length() - 1));
     }
 
@@ -33,6 +34,7 @@ public class IOField {
         if(ioText.length() > 0 && checkIfValidOperation(ioText)){
             float result = 0;
 
+            //Split equation and keep delimiters
             String SPLIT_REGEX =
                     "(((?<=\\+)|(?=\\+))" +
                     "|((?<=\\-)|(?=\\-))" +
@@ -43,22 +45,22 @@ public class IOField {
             String[] splitEqArray = ioText.split(SPLIT_REGEX);
             ArrayList<String> splitEq = new ArrayList<>(Arrays.asList(splitEqArray));
 
+            // Add first number to result, if eq is 1+1, +1 will be left in splitEq
             result += Float.parseFloat(splitEq.get(0));
             splitEq.remove(0);
 
-            int index = 0;
+            //Go through splitEq and calculate result
             while(splitEq.size() > 0){
                 String current = splitEq.get(0);
-                System.out.println("WHILE LOOP");
 
                 switch (current){
                     case "+":
                         result = new Addition().parseEquation(result, splitEq.get(1));;
 
+                        //Remove eq operator and number
                         splitEq.remove(1);
                         splitEq.remove(0);
 
-                        index++;
                         break;
                     case "-":
                         result = new Subtraction().parseEquation(result, splitEq.get(1));;
@@ -66,7 +68,6 @@ public class IOField {
                         splitEq.remove(1);
                         splitEq.remove(0);
 
-                        index++;
                         break;
                     case "*":
                         result = new Multiplication().parseEquation(result, splitEq.get(1));;
@@ -74,7 +75,6 @@ public class IOField {
                         splitEq.remove(1);
                         splitEq.remove(0);
 
-                        index++;
                         break;
                     case "/":
                         result = new Division().parseEquation(result, splitEq.get(1));;
@@ -82,7 +82,6 @@ public class IOField {
                         splitEq.remove(1);
                         splitEq.remove(0);
 
-                        index++;
                         break;
                     case "%":
                         result = new Modulus().parseEquation(result, splitEq.get(1));;
@@ -90,7 +89,6 @@ public class IOField {
                         splitEq.remove(1);
                         splitEq.remove(0);
 
-                        index++;
                         break;
                     case "√":
                         result = new SquareRoot().parseEquation(result, splitEq.get(1));;
@@ -98,13 +96,13 @@ public class IOField {
                         splitEq.remove(1);
                         splitEq.remove(0);
 
-                        index++;
                         break;
                 }
-
-                System.out.println(result);
             }
+
+            ioField.setText(String.valueOf(result));
         }else{
+            //Alert if math operation is invalid
             new Alert(Alert.AlertType.ERROR, "Invalid math operation", ButtonType.OK).showAndWait();
         }
     }
