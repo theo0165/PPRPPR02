@@ -9,7 +9,7 @@ public class Addition extends MathFunction{
     }
 
     @Override
-    public float parseEquation(float right, float left) {
-        return right + left;
+    public float parseEquation(float currentRes, String toAdd) {
+        return currentRes + Float.parseFloat(toAdd);
     }
 }

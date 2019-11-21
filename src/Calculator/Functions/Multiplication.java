@@ -7,7 +7,7 @@ public class Multiplication extends MathFunction{
     }
 
     @Override
-    public float parseEquation(float first, float second) {
-        return 0;
+    public float parseEquation(float currentRes, String toMultiply) {
+        return currentRes * Float.parseFloat(toMultiply);
     }
 }

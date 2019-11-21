@@ -1,6 +1,6 @@
 package Calculator;
 
-import Calculator.Functions.Addition;
+import Calculator.Functions.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
@@ -30,8 +30,80 @@ public class IOField {
     public static void calculateField(){
         String ioText = ioField.getText();
 
-        if(checkIfValidOperation(ioText)){
+        if(ioText.length() > 0 && checkIfValidOperation(ioText)){
+            float result = 0;
 
+            String SPLIT_REGEX =
+                    "(((?<=\\+)|(?=\\+))" +
+                    "|((?<=\\-)|(?=\\-))" +
+                    "|((?<=\\*)|(?=\\*))" +
+                    "|((?<=\\/)|(?=\\/))" +
+                    "|((?<=\\%)|(?=\\%))" +
+                    "|((?<=\\√)|(?=\\√)))";
+            String[] splitEqArray = ioText.split(SPLIT_REGEX);
+            ArrayList<String> splitEq = new ArrayList<>(Arrays.asList(splitEqArray));
+
+            result += Float.parseFloat(splitEq.get(0));
+            splitEq.remove(0);
+
+            int index = 0;
+            while(splitEq.size() > 0){
+                String current = splitEq.get(0);
+                System.out.println("WHILE LOOP");
+
+                switch (current){
+                    case "+":
+                        result = new Addition().parseEquation(result, splitEq.get(1));;
+
+                        splitEq.remove(1);
+                        splitEq.remove(0);
+
+                        index++;
+                        break;
+                    case "-":
+                        result = new Subtraction().parseEquation(result, splitEq.get(1));;
+
+                        splitEq.remove(1);
+                        splitEq.remove(0);
+
+                        index++;
+                        break;
+                    case "*":
+                        result = new Multiplication().parseEquation(result, splitEq.get(1));;
+
+                        splitEq.remove(1);
+                        splitEq.remove(0);
+
+                        index++;
+                        break;
+                    case "/":
+                        result = new Division().parseEquation(result, splitEq.get(1));;
+
+                        splitEq.remove(1);
+                        splitEq.remove(0);
+
+                        index++;
+                        break;
+                    case "%":
+                        result = new Modulus().parseEquation(result, splitEq.get(1));;
+
+                        splitEq.remove(1);
+                        splitEq.remove(0);
+
+                        index++;
+                        break;
+                    case "√":
+                        result = new SquareRoot().parseEquation(result, splitEq.get(1));;
+
+                        splitEq.remove(1);
+                        splitEq.remove(0);
+
+                        index++;
+                        break;
+                }
+
+                System.out.println(result);
+            }
         }else{
             new Alert(Alert.AlertType.ERROR, "Invalid math operation", ButtonType.OK).showAndWait();
         }

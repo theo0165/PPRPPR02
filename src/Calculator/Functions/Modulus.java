@@ -7,7 +7,7 @@ public class Modulus extends MathFunction{
     }
 
     @Override
-    public float parseEquation(float first, float second) {
-        return 0;
+    public float parseEquation(float currentRes, String toMod) {
+        return currentRes % Float.parseFloat(toMod);
     }
 }

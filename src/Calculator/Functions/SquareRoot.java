@@ -7,7 +7,7 @@ public class SquareRoot extends MathFunction{
     }
 
     @Override
-    public float parseEquation(float first, float second) {
-        return 0;
+    public float parseEquation(float currentRes, String toRoot) {
+        return Float.parseFloat(String.valueOf(currentRes + Math.sqrt(Float.parseFloat(toRoot))));
     }
 }
