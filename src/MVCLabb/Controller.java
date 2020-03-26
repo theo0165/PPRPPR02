@@ -8,9 +8,11 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class Controller {
     double size = 18;
+    GraphicsContext graphicsContext;
 
     @FXML
     Canvas _canvas;
@@ -22,6 +24,8 @@ public class Controller {
     TextField _sizePicker;
 
     public void initialize() {
+        _canvas.getStyleClass().add("canvas");
+
         _sizePicker.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -32,7 +36,9 @@ public class Controller {
             }
         });
 
-        GraphicsContext graphicsContext = _canvas.getGraphicsContext2D();
+        graphicsContext = _canvas.getGraphicsContext2D();
+        graphicsContext.setFill(Color.rgb(51,51,51));
+        graphicsContext.fillRect(0, 0, _canvas.getWidth(), _canvas.getHeight());
         _canvas.setOnMouseDragged(event -> {
             double x = event.getX() - size / 2;
             double y = event.getY() - size / 2;
@@ -48,6 +54,12 @@ public class Controller {
 
     public void changeSize(ActionEvent actionEvent) {
         size = Double.valueOf(_sizePicker.getText());
-        initialize();
+    }
+
+    public void clearCanvas(ActionEvent actionEvent) {
+        graphicsContext.clearRect(0,0, _canvas.getWidth(), _canvas.getHeight());
+
+        graphicsContext.setFill(Color.rgb(51,51,51));
+        graphicsContext.fillRect(0, 0, _canvas.getWidth(), _canvas.getHeight());
     }
 }
